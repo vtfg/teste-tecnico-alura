@@ -1,14 +1,21 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import clsx from "clsx";
 
 import { getPosts } from "@/lib/services";
 import { categories } from "@/lib/constants";
 import { ErrorAlert } from "@/components/error-alert";
 import { Search } from "@/components/search";
+import { Pagination } from "@/components/pagination";
 
-export default async function Home() {
+export default async function Home(props: {
+  searchParams?: Promise<{
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const currentPage = Number(searchParams?.page) || 1;
+
   return (
     <main className="flex flex-col items-center justify-center w-full">
       <nav className="container py-18 flex items-center justify-between">
@@ -99,8 +106,8 @@ export default async function Home() {
           </div>
         </div>
 
-        <Suspense fallback={<PostsSkeleton />}>
-          <Posts />
+        <Suspense key={currentPage} fallback={<PostsSkeleton />}>
+          <Posts page={currentPage} />
         </Suspense>
       </section>
 
@@ -119,7 +126,7 @@ export default async function Home() {
           <ul className="flex flex-col gap-3">
             <li>
               <a
-                href="mail:fernandamascheti@gmail.com"
+                href="mailto:fernandamascheti@gmail.com"
                 className="flex gap-2.5 text-base text-foreground-secondary hover:underline hover:brightness-90 transition-all"
               >
                 <Image
@@ -170,8 +177,12 @@ export default async function Home() {
   );
 }
 
-async function Posts() {
-  const { data, error } = await getPosts({ page: 1 });
+interface PostsProps {
+  page: number;
+}
+
+async function Posts({ page }: PostsProps) {
+  const { data, error } = await getPosts({ page });
 
   if (error || !data) {
     return <ErrorAlert error={error} />;
@@ -181,9 +192,12 @@ async function Posts() {
 
   return (
     <>
-      <div className="grid grid-rows-2 grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-6">
         {posts.map((post) => (
-          <article className="flex flex-col gap-4 p-6 border border-brand-primary rounded-sm hover:shadow-2xl hover:shadow-brand-primary/30 transition-all">
+          <article
+            key={post.id}
+            className="flex flex-col gap-4 p-6 border border-brand-primary rounded-sm hover:shadow-2xl hover:shadow-brand-primary/30 transition-all"
+          >
             <div className="relative">
               <img
                 src={post.imageUrl}
@@ -216,22 +230,7 @@ async function Posts() {
         ))}
       </div>
 
-      <div className="flex items-center gap-4">
-        {[...Array(pagination.totalPages + 1).keys()].map((i) => (
-          <button
-            key={i}
-            className={clsx(
-              "px-3 py-2 text-white bg-brand-disabled border-brand-disabled font-bold border rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-disabled/50",
-              {
-                "bg-brand-secondary border-brand-secondary focus:ring-brand-secondary/50":
-                  pagination.currentPage === i + 1,
-              }
-            )}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
+      <Pagination currentPage={page} totalPages={pagination.totalPages} />
     </>
   );
 }
