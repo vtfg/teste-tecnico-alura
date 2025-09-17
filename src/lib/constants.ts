@@ -88,7 +88,7 @@ type APIErrorMessages = {
 
 export const errorMessages: APIErrorMessages = {
   not_found:
-    "Item não encontrado. Por favor, revise a sua pesquisa e tente novamente.",
+    "Postagem, categoria ou tag não encontrada. Por favor, revise a sua pesquisa e tente novamente.",
   out_of_bounds:
     "Você tentou ir para uma página que não existe. Por favor, refaça a sua pesquisa.",
   unexpected: "Um erro desconhecido ocorreu. Tente novamente mais tarde.",

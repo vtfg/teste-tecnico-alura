@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+
 import { errorMessages } from "@/lib/constants";
 import { APIError } from "@/lib/models";
 
@@ -8,10 +10,17 @@ interface ErrorAlertProps {
 }
 
 export function ErrorAlert({ error }: ErrorAlertProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+
   let message = errorMessages.unexpected;
 
   if (error) {
     message = errorMessages[error];
+  }
+
+  function handleResetSearch() {
+    router.replace(`${pathname}#blog`);
   }
 
   return (
@@ -20,6 +29,12 @@ export function ErrorAlert({ error }: ErrorAlertProps) {
         Houve um problema
       </h2>
       <p className="text-sm text-foreground-primary">{message}</p>
+      <button
+        className="mt-2 px-3 py-2 min-w-fit bg-brand-primary text-white text-sm font-bold border border-brand-primary rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-primary/50 disabled:bg-brand-disabled disabled:border-brand-disabled disabled:cursor-not-allowed"
+        onClick={handleResetSearch}
+      >
+        Limpar pesquisa
+      </button>
     </div>
   );
 }

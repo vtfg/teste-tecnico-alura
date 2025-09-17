@@ -2,14 +2,15 @@ import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getPosts } from "@/lib/services";
-import { categories } from "@/lib/constants";
 import { ErrorAlert } from "@/components/error-alert";
-import { Search } from "@/components/search";
+import { Filters } from "@/components/filters";
 import { Pagination } from "@/components/pagination";
+import { Search } from "@/components/search";
+import { getPosts } from "@/lib/services";
 
 export default async function Home(props: {
   searchParams?: Promise<{
+    category?: string;
     page?: string;
   }>;
 }) {
@@ -88,26 +89,11 @@ export default async function Home(props: {
             <Search />
           </div>
 
-          <div className="flex items-center justify-end gap-4 w-full ">
-            <p className="text-base font-bold text-foreground-primary">
-              Categorias:
-            </p>
-
-            <div className="flex gap-4 max-w-md overflow-x-auto">
-              {categories.map((category) => (
-                <button
-                  key={category.slug}
-                  className="px-3 py-2 min-w-fit bg-brand-primary text-white font-bold border border-brand-primary rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-primary/50 disabled:bg-brand-disabled disabled:border-brand-disabled disabled:cursor-not-allowed"
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
+          <Filters />
         </div>
 
         <Suspense key={currentPage} fallback={<PostsSkeleton />}>
-          <Posts page={currentPage} />
+          <Posts category={searchParams?.category} page={currentPage} />
         </Suspense>
       </section>
 
@@ -178,11 +164,12 @@ export default async function Home(props: {
 }
 
 interface PostsProps {
+  category?: string;
   page: number;
 }
 
-async function Posts({ page }: PostsProps) {
-  const { data, error } = await getPosts({ page });
+async function Posts({ category, page }: PostsProps) {
+  const { data, error } = await getPosts({ category, page });
 
   if (error || !data) {
     return <ErrorAlert error={error} />;
