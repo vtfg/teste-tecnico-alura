@@ -6,7 +6,7 @@ import "./globals.css";
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["400", "700"],
 });
 
 const inter = Inter({

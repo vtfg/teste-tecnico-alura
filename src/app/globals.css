@@ -16,6 +16,13 @@
   --color-foreground-secondary: #6e859f;
 }
 
+.text-gradient {
+  background: linear-gradient(to right, #8c61d5, #1ca7c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 body {
   @apply font-body antialiased scroll-smooth;
 }
