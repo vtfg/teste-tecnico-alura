@@ -119,3 +119,119 @@ async function getPostsByCategory({
     };
   }
 }
+
+interface GetPostByIdParams {
+  id: string;
+}
+
+interface GetPostByIdResult {
+  error?: APIError;
+  data?: Post;
+}
+
+export async function getPostById({
+  id,
+}: GetPostByIdParams): Promise<GetPostByIdResult> {
+  try {
+    const response = await fetch(process.env.API_URL + "/api/posts/id/" + id);
+
+    if (!response.ok) {
+      switch (response.status) {
+        case 400:
+          return {
+            error: "out_of_bounds",
+          };
+        case 404:
+          return {
+            error: "not_found",
+          };
+        case 500:
+          return {
+            error: "unexpected",
+          };
+      }
+    }
+
+    const json = await response.json();
+
+    return {
+      data: json.post,
+    };
+  } catch (error) {
+    return {
+      error: "unexpected",
+    };
+  }
+}
+
+interface GetRelatedPostsParams {
+  currentPostId: string;
+  category: string;
+  tags: string[];
+}
+
+interface GetRelatedPostsResult {
+  error?: APIError;
+  data?: {
+    posts: Post[];
+  };
+}
+
+export async function getRelatedPosts({
+  currentPostId,
+  category,
+  tags,
+}: GetRelatedPostsParams): Promise<GetRelatedPostsResult> {
+  try {
+    const params = new URLSearchParams({
+      limit: "9",
+    });
+
+    const response = await fetch(
+      process.env.API_URL + "/api/posts?" + params.toString()
+    );
+
+    if (!response.ok) {
+      switch (response.status) {
+        case 400:
+          return {
+            error: "out_of_bounds",
+          };
+        case 404:
+          return {
+            error: "not_found",
+          };
+        case 500:
+          return {
+            error: "unexpected",
+          };
+      }
+    }
+
+    const json = await response.json();
+
+    const posts = json.posts as Post[];
+
+    // Only include posts with the same category or at least one tag in common, excluding the current post
+    const filteredPosts = posts.filter((post) => {
+      if (post.id === currentPostId) {
+        return false;
+      }
+
+      return (
+        post.category.slug === category ||
+        post.tags.some((tag) => tags.includes(tag.slug))
+      );
+    });
+
+    return {
+      data: {
+        posts: filteredPosts.slice(0, 3),
+      },
+    };
+  } catch (error) {
+    return {
+      error: "unexpected",
+    };
+  }
+}

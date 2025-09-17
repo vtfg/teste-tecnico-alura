@@ -86,10 +86,19 @@ type APIErrorMessages = {
   [key in APIError]: string;
 };
 
-export const errorMessages: APIErrorMessages = {
+export const genericErrorMessages: APIErrorMessages = {
   not_found:
     "Postagem, categoria ou tag não encontrada. Por favor, revise a sua pesquisa e tente novamente.",
   out_of_bounds:
     "Você tentou ir para uma página que não existe. Por favor, refaça a sua pesquisa.",
   unexpected: "Um erro desconhecido ocorreu. Tente novamente mais tarde.",
+};
+
+export const postPageErrorMessages: APIErrorMessages = {
+  not_found:
+    "A postagem que você tentou acessar pode ter sido excluída ou nunca existido.",
+  out_of_bounds:
+    "Parâmetros inválidos. Volte para a página inicial ou tente novamente mais tarde.",
+  unexpected:
+    "Um erro desconhecido ocorreu. Volte para a página inicial ou tente novamente mais tarde.",
 };

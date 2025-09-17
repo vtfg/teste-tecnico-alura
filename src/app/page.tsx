@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ErrorAlert } from "@/components/error-alert";
 import { Filters } from "@/components/filters";
 import { Pagination } from "@/components/pagination";
+import { PostGrid, PostGridItem } from "@/components/post";
 import { Search } from "@/components/search";
 import { getPosts } from "@/lib/services";
 
@@ -179,43 +180,18 @@ async function Posts({ category, page }: PostsProps) {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-6">
+      <PostGrid>
         {posts.map((post) => (
-          <article
+          <PostGridItem
             key={post.id}
-            className="flex flex-col gap-4 p-6 border border-brand-primary rounded-sm hover:shadow-2xl hover:shadow-brand-primary/30 transition-all"
-          >
-            <div className="relative">
-              <img
-                src={post.imageUrl}
-                alt={`Imagem da postagem ${post.title}`}
-                className="w-full object-cover"
-              />
-
-              <span className="w-full max-w-[130px] h-[30px] bg-brand-primary text-white font-display text-sm flex items-center justify-center  absolute bottom-0 right-0">
-                {post.category.name}
-              </span>
-            </div>
-
-            <hgroup className="flex flex-col gap-4">
-              <h3 className="font-display font-bold text-xl/[100%] text-foreground-primary">
-                {post.title}
-              </h3>
-
-              <p className="text-base text-foreground-secondary line-clamp-3 overflow-ellipsis">
-                {post.content}
-              </p>
-            </hgroup>
-
-            <Link
-              href={`/posts/${post.id}`}
-              className="w-fit text-base text-brand-primary font-bold hover:underline hover:brightness-90 transition-all"
-            >
-              Ler mais
-            </Link>
-          </article>
+            id={post.id}
+            imageUrl={post.imageUrl}
+            category={post.category}
+            title={post.title}
+            excerpt={post.content}
+          />
         ))}
-      </div>
+      </PostGrid>
 
       <Pagination currentPage={page} totalPages={pagination.totalPages} />
     </>
