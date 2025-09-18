@@ -27,15 +27,15 @@ export default async function Home(props: {
           alt="Foto de perfil da Fernanda Mascheti."
         />
 
-        <p className="font-display font-bold text-base text-brand-primary text-center">
+        <p className="font-display font-bold text-sm md:text-base text-brand-primary text-center">
           Olá, meu nome é Fernanda_
         </p>
 
-        <h1 className="font-display font-bold text-6xl text-foreground-primary text-center">
+        <h1 className="font-display font-bold text-2xl md:text-3xl lg:text-6xl text-foreground-primary text-center">
           Eu ensino <span className="text-gradient">Programação</span>
         </h1>
 
-        <p className="text-base text-foreground-secondary text-center max-w-xl">
+        <p className="text-sm lg:text-base text-foreground-secondary text-center max-w-xl">
           Sou Engenheira de Computação e Pedagoga. Ensino pensamento
           computacional para estudantes do Ensino Fundamental e Médio. Ensino
           sobre pensamento computacional usando HTML, CSS e JavaScript. Veja os
@@ -47,16 +47,16 @@ export default async function Home(props: {
           width={686}
           height={28}
           alt="Divisor de seções."
-          className="mt-[85px]"
+          className="mt-[42px] lg:mt-[85px]"
         />
       </section>
 
       <section
         id="blog"
-        className="container flex items-center gap-8 flex-col mt-[84px] scroll-m-6"
+        className="container flex items-center gap-8 flex-col mt-[42px] lg:mt-[84px] scroll-m-6"
       >
-        <div className="flex items-start justify-between w-full">
-          <div className="flex items-center justify-start gap-8 w-full">
+        <div className="flex flex-col lg:flex-row items-start justify-between w-full gap-4 xl:gap-0 ">
+          <div className="flex flex-col xl:flex-row xl:items-center justify-start gap-4 w-full">
             <h2 className="font-display font-bold text-2xl text-foreground-primary">
               Minhas postagens
             </h2>
@@ -75,7 +75,7 @@ export default async function Home(props: {
         </Suspense>
       </section>
 
-      <section className="container flex items-center gap-[290px] mt-[122px] mb-[26px]">
+      <section className="container flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-[290px] mt-[122px] mb-[26px]">
         <div className="flex flex-col gap-3">
           <p className="font-display font-bold text-base text-brand-primary">
             Vamos conversar?
@@ -171,7 +171,7 @@ async function Posts({ category, page }: PostsProps) {
 
 function PostsSkeleton() {
   return (
-    <div className="grid grid-rows-2 grid-cols-3 w-full h-full gap-6">
+    <div className="grid grid-cols-1 lg:grid-rows-2 lg:grid-cols-3 w-full h-full gap-6">
       <div className="w-full h-[540px] rounded-sm bg-brand-gray/15 animate-pulse"></div>
       <div className="w-full h-[540px] rounded-sm bg-brand-gray/15 animate-pulse"></div>
       <div className="w-full h-[540px] rounded-sm bg-brand-gray/15 animate-pulse"></div>

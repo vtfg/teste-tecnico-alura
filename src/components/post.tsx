@@ -8,7 +8,9 @@ interface PostGridProps {
 }
 
 export function PostGrid({ children }: PostGridProps) {
-  return <div className="grid grid-cols-3 gap-6">{children}</div>;
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">{children}</div>
+  );
 }
 
 interface PostGridItemProps {

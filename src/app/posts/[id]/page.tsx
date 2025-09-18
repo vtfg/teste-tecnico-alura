@@ -56,7 +56,7 @@ export default async function Post({
 
   return (
     <>
-      <section className="container grid grid-cols-2 grid-rows-1 items-stretch gap-6 mt-8">
+      <section className="container grid lg:grid-cols-2 grid-rows-1 items-stretch gap-6 mt-8">
         <div className="flex flex-col gap-6" id="post-description">
           <h1 className="font-display font-bold text-5xl/[100%] text-foreground-primary">
             {data.title}
@@ -98,11 +98,11 @@ export default async function Post({
         <img
           src={data.imageUrl}
           alt={`Imagem da postagem ${data.title}`}
-          className="object-cover size-full"
+          className="object-cover size-full order-first lg:order-none"
         />
       </section>
 
-      <section className="container mt-[63px]">
+      <section className="container mt-6 lg:mt-[63px]">
         <p className="text-base text-foreground-secondary">{data.content}</p>
       </section>
 
@@ -168,7 +168,7 @@ async function RelatedPosts({
 
 function RelatedPostsSkeleton() {
   return (
-    <div className="grid  grid-cols-3 w-full h-full gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full gap-6">
       <div className="w-full h-[540px] rounded-sm bg-brand-gray/15 animate-pulse"></div>
       <div className="w-full h-[540px] rounded-sm bg-brand-gray/15 animate-pulse"></div>
       <div className="w-full h-[540px] rounded-sm bg-brand-gray/15 animate-pulse"></div>

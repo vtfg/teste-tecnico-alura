@@ -23,11 +23,11 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
     params.set("page", page.toString());
 
     // TODO: Scroll to blog posts section
-    router.replace(`${pathname}?${params.toString()}`);
+    router.push(`${pathname}?${params.toString()}`);
   }
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center justify-center gap-4 w-full overflow-x-auto">
       {[...Array(totalPages).keys()].map((i) => (
         <button
           key={i}

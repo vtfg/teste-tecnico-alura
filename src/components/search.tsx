@@ -14,7 +14,7 @@ export function Search() {
   return (
     <form
       onSubmit={handleSearch}
-      className="flex justify-end items-center relative w-full max-w-[320px]"
+      className="flex justify-end items-center relative w-full lg:max-w-[320px]"
     >
       <input
         aria-label="Pesquisa por palavra-chave"

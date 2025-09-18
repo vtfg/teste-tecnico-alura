@@ -24,7 +24,7 @@ export function ErrorAlert({ error }: ErrorAlertProps) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-2 py-8">
+    <div className="flex flex-col items-center gap-2 py-8 text-center">
       <h2 className="font-display font-bold text-lg text-foreground-primary">
         Houve um problema
       </h2>
@@ -50,7 +50,7 @@ export function PostPageErrorAlert({ error }: ErrorAlertProps) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-2 py-8">
+    <div className="flex flex-col items-center gap-2 py-8 text-center">
       <h2 className="font-display font-bold text-lg text-foreground-primary">
         Houve um problema
       </h2>
