@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Chakra_Petch, Inter } from "next/font/google";
 
+import { ThemeProvider } from "@/app/providers";
 import { Navbar } from "@/components/navbar";
 
 import "./globals.css";
@@ -28,19 +29,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${chakraPetch.variable} ${inter.variable}`}>
-        <main className="flex flex-col items-center justify-center w-full">
-          <Navbar />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <main className="flex flex-col items-center justify-center w-full">
+            <Navbar />
 
-          {children}
+            {children}
 
-          <footer className="container flex flex-col gap-16 mt-[38px] mb-[44px]">
-            <p className="text-center text-base text-foreground-secondary">
-              © Copyright 2025. Produzido por Fernanda Mascheti
-            </p>
-          </footer>
-        </main>
+            <footer className="container flex flex-col gap-16 mt-[38px] mb-[44px]">
+              <p className="text-center text-base text-foreground-secondary">
+                © Copyright 2025. Produzido por Fernanda Mascheti
+              </p>
+            </footer>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

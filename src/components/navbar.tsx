@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,6 +11,8 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+const ThemeSwitch = dynamic(() => import("./theme-switch"), { ssr: false });
 
 export function Navbar() {
   const pathname = usePathname();
@@ -31,13 +34,13 @@ export function Navbar() {
                 className="group-hover:brightness-90 transition-all size-8 lg:size-11.5"
               />
 
-              <span className="font-display font-bold text-lg lg:text-2xl text-brand-secondary uppercase group-hover:underline">
+              <span className="font-display font-bold text-lg lg:text-2xl text-brand-secondary dark:text-foreground-primary uppercase group-hover:underline">
                 Fernanda Mascheti
               </span>
             </Link>
           </div>
 
-          <div className="hidden sm:flex items-center">
+          <div className="hidden sm:flex items-center gap-4">
             <ul className="flex gap-8">
               <li
                 className={clsx(
@@ -60,6 +63,8 @@ export function Navbar() {
                 <Link href="/#blog">Blog</Link>
               </li>
             </ul>
+
+            <ThemeSwitch />
           </div>
         </div>
         <div className="absolute inset-y-0 right-0 flex items-center sm:hidden mr-1">
@@ -78,7 +83,7 @@ export function Navbar() {
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden w-full">
+      <DisclosurePanel className="sm:hidden w-full border-b border-b-brand-gray/25">
         <div className="space-y-1 px-2 pt-2 pb-3">
           <DisclosureButton
             as="a"
@@ -88,7 +93,7 @@ export function Navbar() {
               pathname === "/"
                 ? "bg-brand-primary text-white"
                 : "text-foreground-primary",
-              "block rounded-md px-3 py-2 text-base font-medium"
+              "block rounded-md px-3 py-2 text-base font-medium hover:bg-brand-gray transition-colors duration-100"
             )}
           >
             Início
@@ -101,11 +106,15 @@ export function Navbar() {
               pathname.startsWith("/posts")
                 ? "bg-brand-primary text-white"
                 : "text-foreground-primary",
-              "block rounded-md px-3 py-2 text-base font-medium"
+              "block rounded-md px-3 py-2 text-base font-medium hover:bg-brand-gray transition-colors duration-100"
             )}
           >
             Blog
           </DisclosureButton>
+
+          <div className="mt-2">
+            <ThemeSwitch />
+          </div>
         </div>
       </DisclosurePanel>
     </Disclosure>

@@ -14,6 +14,21 @@
 
   --color-foreground-primary: #284260;
   --color-foreground-secondary: #6e859f;
+  --color-foreground-on-gray: #2d2d2d;
+}
+
+@layer base {
+  .dark {
+    --color-brand-primary: #1ca7c8;
+    --color-brand-secondary: #284260;
+    --color-brand-gray: #778da9;
+
+    --color-background-primary: #131313;
+
+    --color-foreground-primary: #e7ecef;
+    --color-foreground-secondary: #bfc0c0;
+    --color-foreground-on-gray: #2d2d2d;
+  }
 }
 
 html {
@@ -21,7 +36,7 @@ html {
 }
 
 body {
-  @apply font-body antialiased scroll-smooth;
+  @apply font-body antialiased scroll-smooth bg-background-primary;
 }
 
 .text-gradient {
