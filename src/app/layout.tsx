@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Chakra_Petch, Inter } from "next/font/google";
 
+import { Navbar } from "@/components/navbar";
+
 import "./globals.css";
 
 const chakraPetch = Chakra_Petch({
@@ -28,7 +30,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${chakraPetch.variable} ${inter.variable}`}>
-        {children}
+        <main className="flex flex-col items-center justify-center w-full">
+          <Navbar />
+
+          {children}
+
+          <footer className="container flex flex-col gap-16 mt-[38px] mb-[44px]">
+            <p className="text-center text-base text-foreground-secondary">
+              © Copyright 2025. Produzido por Fernanda Mascheti
+            </p>
+          </footer>
+        </main>
       </body>
     </html>
   );

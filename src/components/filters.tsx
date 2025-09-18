@@ -3,6 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import clsx from "clsx";
 
+import { Button, IconButton } from "@/components/ui/button";
 import { categories } from "@/lib/constants";
 import { Category } from "@/lib/models";
 
@@ -44,28 +45,24 @@ export function Filters() {
 
       <div className="flex gap-4 max-w-md overflow-x-auto">
         {categories.map((category) => (
-          <button
+          <Button
             key={category.slug}
             title={`Filtrar pela categoria ${category.name}`}
-            className={clsx(
-              "px-3 py-2 min-w-fit bg-brand-primary text-white font-bold border border-brand-primary rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-primary/50 disabled:bg-brand-disabled disabled:border-brand-disabled disabled:cursor-not-allowed",
-              {
-                "bg-brand-disabled! border-brand-disabled! focus:ring-brand-disabled/50!":
-                  currentCategory && currentCategory !== category.slug,
-              }
-            )}
+            className={clsx({
+              "bg-brand-gray! border-brand-gray! focus:ring-brand-gray/50!":
+                currentCategory && currentCategory !== category.slug,
+            })}
             onClick={() => handleChangeCategory(category)}
           >
             {category.name}
-          </button>
+          </Button>
         ))}
       </div>
 
       {currentCategory && (
-        <button
+        <IconButton
           aria-label="Limpar filtro de categoria"
           title="Limpar filtro de categoria"
-          className="size-8 flex items-center justify-center transition-all outline-0 rounded-full group cursor-pointer hover:brightness-90 focus:bg-brand-primary focus:ring-2 focus:ring-brand-primary/50"
           onClick={handleClearFilter}
         >
           <svg
@@ -78,13 +75,12 @@ export function Filters() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="stroke-brand-primary group-focus:stroke-white transition-colors size-6"
           >
             <circle cx="12" cy="12" r="10" />
             <path d="m15 9-6 6" />
             <path d="m9 9 6 6" />
           </svg>
-        </button>
+        </IconButton>
       )}
     </div>
   );

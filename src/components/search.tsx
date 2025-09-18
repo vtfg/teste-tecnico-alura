@@ -2,6 +2,8 @@
 
 import { FormEvent } from "react";
 
+import { IconButton } from "@/components/ui/button";
+
 export function Search() {
   function handleSearch(event: FormEvent) {
     event.preventDefault();
@@ -23,10 +25,10 @@ export function Search() {
         className="px-4 py-2 w-full border border-brand-primary rounded-sm text-foreground-primary placeholder:text-base placeholder:text-foreground-primary placeholder:opacity-50 focus:ring-2 focus:ring-brand-primary/50 outline-0 transition-all"
       />
 
-      <button
+      <IconButton
         aria-label="Pesquisar"
         type="submit"
-        className="absolute mr-2 size-8 flex items-center justify-center transition-all outline-0 rounded-full group cursor-pointer hover:brightness-90 focus:bg-brand-primary focus:ring-2 focus:ring-brand-primary/50"
+        className="absolute mr-2"
       >
         <svg
           width="24"
@@ -34,7 +36,6 @@ export function Search() {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="stroke-brand-primary group-focus:stroke-white transition-colors size-6"
         >
           <path
             d="M21 21L16.66 16.66"
@@ -49,7 +50,7 @@ export function Search() {
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </IconButton>
     </form>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
 import { genericErrorMessages, postPageErrorMessages } from "@/lib/constants";
 import { APIError } from "@/lib/models";
 
@@ -28,12 +29,9 @@ export function ErrorAlert({ error }: ErrorAlertProps) {
         Houve um problema
       </h2>
       <p className="text-sm text-foreground-primary">{message}</p>
-      <button
-        className="mt-2 px-3 py-2 min-w-fit bg-brand-primary text-white text-sm font-bold border border-brand-primary rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-primary/50 disabled:bg-brand-disabled disabled:border-brand-disabled disabled:cursor-not-allowed"
-        onClick={handleResetSearch}
-      >
+      <Button className="mt-2 text-sm" onClick={handleResetSearch}>
         Limpar pesquisa
-      </button>
+      </Button>
     </div>
   );
 }
@@ -57,12 +55,9 @@ export function PostPageErrorAlert({ error }: ErrorAlertProps) {
         Houve um problema
       </h2>
       <p className="text-sm text-foreground-primary">{message}</p>
-      <button
-        className="mt-2 px-3 py-2 min-w-fit bg-brand-primary text-white text-sm font-bold border border-brand-primary rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-primary/50 disabled:bg-brand-disabled disabled:border-brand-disabled disabled:cursor-not-allowed"
-        onClick={handleGoBack}
-      >
+      <Button className="mt-2 text-sm" onClick={handleGoBack}>
         Voltar para a página inicial
-      </button>
+      </Button>
     </div>
   );
 }

@@ -32,7 +32,7 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
         <button
           key={i}
           className={clsx(
-            "px-3 py-2 text-white bg-brand-disabled border-brand-disabled font-bold border rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-disabled/50",
+            "px-3 py-2 text-white bg-brand-gray border-brand-gray font-bold border rounded-sm outline-0 transition-all cursor-pointer hover:brightness-90 focus:ring-2 focus:ring-brand-gray/50",
             {
               "bg-brand-secondary border-brand-secondary focus:ring-brand-secondary/50":
                 currentPage === i + 1,

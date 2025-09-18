@@ -8,7 +8,7 @@
 
   --color-brand-primary: #1ca7c8;
   --color-brand-secondary: #284260;
-  --color-brand-disabled: #9d9d9d;
+  --color-brand-gray: #9d9d9d;
 
   --color-background-primary: #ffffff;
 
@@ -16,13 +16,17 @@
   --color-foreground-secondary: #6e859f;
 }
 
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply font-body antialiased scroll-smooth;
+}
+
 .text-gradient {
   background: linear-gradient(to right, #8c61d5, #1ca7c8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-}
-
-body {
-  @apply font-body antialiased scroll-smooth;
 }
