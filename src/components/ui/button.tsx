@@ -36,9 +36,11 @@ export function Button({
   );
 }
 
-interface IconButtonProps extends ComponentProps<"button"> {}
-
-export function IconButton({ className, children, ...props }: IconButtonProps) {
+export function IconButton({
+  className,
+  children,
+  ...props
+}: ComponentProps<"button">) {
   return (
     <button
       className={clsx(
