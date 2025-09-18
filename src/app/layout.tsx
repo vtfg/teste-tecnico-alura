@@ -37,13 +37,19 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <main className="flex flex-col items-center justify-center w-full">
+          <img
+            src="/bg-colors.svg"
+            className="min-h-screen absolute top-0 left-0 w-full -z-10"
+            style={{ opacity: "var(--background-blur-opacity)" }}
+          />
+
+          <main className="flex flex-col items-center justify-center w-full relative">
             <Navbar />
 
             {children}
 
             <footer className="container flex flex-col gap-16 mt-[38px] mb-[44px]">
-              <p className="text-center text-base text-foreground-secondary">
+              <p className="text-center text-sm lg:text-base text-foreground-secondary">
                 © Copyright 2025. Produzido por Fernanda Mascheti
               </p>
             </footer>

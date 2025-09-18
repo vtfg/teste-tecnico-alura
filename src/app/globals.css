@@ -15,6 +15,8 @@
   --color-foreground-primary: #284260;
   --color-foreground-secondary: #6e859f;
   --color-foreground-on-gray: #2d2d2d;
+
+  --background-blur-opacity: 100%;
 }
 
 @layer base {
@@ -28,6 +30,8 @@
     --color-foreground-primary: #e7ecef;
     --color-foreground-secondary: #bfc0c0;
     --color-foreground-on-gray: #2d2d2d;
+
+    --background-blur-opacity: 25%;
   }
 }
 
