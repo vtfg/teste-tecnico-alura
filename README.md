@@ -2,7 +2,10 @@
   Teste Técnico - Alura
 </h1>
 
-<img src="./.github/screenshot.png" alt="Captura de tela do projeto" />
+Captura de tela                                          |  Lighthouse
+:-------------------------------------------------------:|:-------------------------------------------------:
+![Captura de tela do projeto](./.github/screenshot.png)  |  ![Nota do Lighthouse](./.github/lighthouse.png) 
+
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
