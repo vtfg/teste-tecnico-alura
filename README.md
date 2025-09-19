@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">
+  Teste Técnico - Alura
+</h1>
 
-## Getting Started
+<img src="./.github/screenshot.png" alt="Captura de tela do projeto" />
 
-First, run the development server:
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-teste">Teste</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-requisitos">Teste</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-licença">Licença</a>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Tecnologias
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O projeto foi desenvolvido com as seguintes tecnologias:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [TailwindCSS](https://tailwindcss.com/)
+- [HeadlessUI](https://headlessui.com/)
+- [Next Themes](https://github.com/pacocoursey/next-themes)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💻 Teste
 
-## Learn More
+O teste técnico consiste na implementação de uma aplicação front-end com base em um design do Figma, requisitando uma API fake para carregar as postagens e aplicando boas práticas de SEO, acessibilidade e responsividade.
 
-To learn more about Next.js, take a look at the following resources:
+- Design: https://www.figma.com/design/MOdixi2zYNtxwNyok05D6W/Desafio-NextJS
+- API: https://nextjs-alura-teste.vercel.app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Requisitos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [x] Desenvolver a página inicial, exibindo dinamicamente as postagens com base nos dados da API;
+- [x] Implementar filtros de postagens, permitindo ~~pesquisa por palavra-chave e~~ filtragem por categorias;
+  - A API não suporta pesquisa por palavra-chave. Mas não seria um problema desenvolver usando o pattern BFF (Backend For Front-end) com uma rota de API privada do Next.js.
+- [x] Adicionar paginação na listagem, limitando a exibição a 6 postagens por página;
+- [x] Criar a página de detalhes da postagem, mostrando todas as informações (título, categorias, tags e descrição) com base no ID;
+- [x] Exibir postagens relacionadas na página de detalhes, sugeridas conforme categorias ou tags semelhantes;
+- [x] Garantir responsividade completa para desktop, tablet e dispositivos móveis;
+- [x] Estruturar o projeto com componentes reutilizáveis para facilitar a manutenção e escalabilidade;
+- [x] Aplicar boas práticas de SEO em todas as páginas;
+- [x] Assegurar a acessibilidade para diferentes públicos e dispositivos;
+- [x] Implementar a funcionalidade de tema claro/escuro como diferencial.
 
-## Deploy on Vercel
+## 🚀 Como executar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Certifique-se de possuir uma versão do Node.js compatível com o projeto (>= v18) e o `pnpm` instalado.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Se estiver usando o `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm)), execute `nvm install`. Esse comando instalará a versão informada no arquivo `.nvmrc`, versão no qual esse projeto foi desenvolvido.
+
+- Clone o repositório
+- Instale as dependências com `pnpm i`
+- Renomeie o arquivo `.env.example` para `.env.local`
+- Inicie o servidor do Next.js com `pnpm dev`
+
+A aplicação estará disponível na URL http://localhost:3000.
+
+## 📄 Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
