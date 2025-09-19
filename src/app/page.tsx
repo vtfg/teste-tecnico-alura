@@ -25,6 +25,7 @@ export default async function Home(props: {
           width={224}
           height={224}
           alt="Foto de perfil da Fernanda Mascheti."
+          fetchPriority="high"
         />
 
         <p className="font-display font-bold text-sm md:text-base text-brand-primary text-center">

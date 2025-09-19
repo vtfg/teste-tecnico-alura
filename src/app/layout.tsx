@@ -39,6 +39,7 @@ export default function RootLayout({
         >
           <img
             src="/bg-colors.svg"
+            alt="Imagem de fundo com cores em efeito de borrado"
             className="min-h-screen absolute top-0 left-0 w-full -z-10"
             style={{ opacity: "var(--background-blur-opacity)" }}
           />
